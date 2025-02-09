@@ -17,8 +17,13 @@
  * under the License.
  */
 const zlib = require('zlib');
-const { ZSTDDecompress } = require('simple-zstd');
-
+let zstd;
+try {
+  zstd = require('simple-zstd');
+} catch (error) {
+  console.warn('zstd compression disabled');
+  zstd = null;
+}
 const yargs = require('yargs');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const parsedArgs = yargs.argv;
@@ -157,6 +162,7 @@ module.exports = newManifest => {
     target: backend,
     hostRewrite: true,
     changeOrigin: true,
+    compress: zstd ? true : false,
     cookieDomainRewrite: '', // remove cookie domain
     selfHandleResponse: true, // so that the onProxyRes takes care of sending the response
     onProxyRes(proxyResponse, request, response) {
