@@ -72,7 +72,9 @@
     "test": "cross-env NODE_ENV=test NODE_OPTIONS=\"--max-old-space-size=4096\" jest --max-workers=50%",
     "type": "tsc --noEmit",
     "update-maps": "jupyter nbconvert --to notebook --execute --inplace 'plugins/legacy-plugin-chart-country-map/scripts/Country Map GeoJSON Generator.ipynb' -Xfrozen_modules=off",
-    "validate-release": "../RELEASING/validate_this_release.sh"
+    "validate-release": "../RELEASING/validate_this_release.sh",
+    "build:map": "webpack --config webpack.map.config.js --mode=production",
+    "dev:map": "webpack --config webpack.map.config.js --mode=development --watch"
   },
   "browserslist": [
     "last 3 chrome versions",
@@ -118,6 +120,8 @@
     "@types/antd": "^1.0.4",
     "@types/d3-format": "^3.0.1",
     "@types/d3-time-format": "^4.0.3",
+    "@types/leaflet": "^1.9.16",
+    "@types/react-leaflet": "^3.0.0",
     "@visx/axis": "^3.8.0",
     "@visx/grid": "^3.5.0",
     "@visx/responsive": "^3.0.0",
@@ -161,6 +165,7 @@
     "js-yaml-loader": "^1.2.2",
     "json-bigint": "^1.0.0",
     "json-stringify-pretty-compact": "^2.0.0",
+    "leaflet": "^1.9.4",
     "lodash": "^4.17.21",
     "luxon": "^3.5.0",
     "mapbox-gl": "^2.10.0",
@@ -189,6 +194,7 @@
     "react-intersection-observer": "^9.10.2",
     "react-js-cron": "^2.1.2",
     "react-json-tree": "^0.17.0",
+    "react-leaflet": "^5.0.0",
     "react-lines-ellipsis": "^0.15.4",
     "react-loadable": "^5.5.0",
     "react-redux": "^7.2.9",
