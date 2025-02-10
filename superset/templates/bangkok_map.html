@@ -1,0 +1,16 @@
+<!-- superset/templates/custom_map.html -->
+{% extends "appbuilder/baselayout.html" %}
+
+{% block content %}
+<div id="map-root"></div>
+{% endblock %}
+
+{% block tail_js %}
+{{ super() }}
+<script src="{{ url_for('static', filename='dist/map.bundle.js') }}"></script>
+{% endblock %}
+
+{% block head_css %}
+{{ super() }}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+{% endblock %}
